@@ -16,7 +16,8 @@ from craftax.craftax_classic.envs.craftax_symbolic_env import (
 )
 
 
-def make_craftax_env_from_name(name: str, auto_reset: bool):
+def make_craftax_env_from_name(name: str, auto_reset: bool = False):
+    auto_reset = "AutoReset" in name
     if auto_reset:
         if name == "Craftax-Symbolic-v1" or name == "Craftax-Symbolic-AutoReset-v1":
             return CraftaxSymbolicEnv()
@@ -68,3 +69,5 @@ def make_craftax_env_from_params(classic: bool, symbolic: bool, auto_reset: bool
                 return CraftaxPixelsEnv()
             else:
                 return CraftaxPixelsEnvNoAutoReset()
+
+
